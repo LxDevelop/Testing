@@ -1,0 +1,14 @@
+cmake_minimum_required(VERSION 3.20)
+project(CmakeTestProject)
+
+include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+conan_basic_setup(TARGETS)
+
+add_definitions("/std:c++17")
+
+file(GLOB SOURCES "src/*.cpp")
+add_executable(CmakeTestProject ${SOURCES} )
+
+
+
+target_link_libraries(CmakeTestProject CONAN_PKG::catch2)
